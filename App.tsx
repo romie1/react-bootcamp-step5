@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { SHE_TECH_LOGO } from './const';
+import { SHE_TECH_LOGO, ROW_COLUMN_CELLS_COUNT } from './const';
 import { buildGameBoard } from './utils';
 import './reset.css';
 import './style.css';
@@ -53,8 +53,12 @@ const Board = () => {
   }, [selections]);
 
   useEffect(
-    () => {}, //primo parametro, funzione che viene eseguita quando uno degli elementi indicato nel secondo parametro cambia
-    [] // secondo parametro, elenco di variabili di stato da osservare (in questo frangente a noi interessa unicamente selections)
+    () => {
+      if (matches === (ROW_COLUMN_CELLS_COUNT * ROW_COLUMN_CELLS_COUNT / 2)) {
+        alert("Complimenti! Hai vinto il gioco! ")
+      }
+    }, //primo parametro, funzione che viene eseguita quando uno degli elementi indicato nel secondo parametro cambia
+    [matches] // secondo parametro, elenco di variabili di stato da osservare (in questo frangente a noi interessa unicamente selections)
   );
 
   return (
